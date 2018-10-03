@@ -17,6 +17,12 @@ module.exports.store = (application, req, res) => {
         return;
     }
 
+    const connection = application.config.database;
+
+    const UsuariosDAO = new application.app.models.UsuariosDAO(connection);
+
+    UsuariosDAO.save(data);
+
     res.redirect('');
 };
 
