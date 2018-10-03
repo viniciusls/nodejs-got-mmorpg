@@ -20,6 +20,18 @@
 
 		<nav class="navbar navbar-default navbar-static-top">
 			<div class="container">
+				<% if (errors.length > 0) { %>
+					<div class="alert alert-danger">
+						<strong>Atenção!</strong>
+	
+						<ul>
+							<% for (let i = 0; i < errors.length; i++) { %>
+								<li><%= errors[i].msg %></li>
+							<% } %>
+						</ul>
+					</div>
+				<% } %>
+
 				<form class="form-inline form-entrar" action="/login" method="POST">
 					<div class="form-group">				
 						<input type="text" name="username" id="usuario" placeholder="Usuário" class="form-control" autocomplete="off" />
@@ -37,7 +49,7 @@
 	    		<div class="col-md-2"></div>
 
 	    		<div class="col-md-8">
-					<img src="images/game_of_thrones_logo.jpg" />
+					<img src="images/game_of_thrones_logo2.jpg" />
 				</div>
 
 	    		<div class="col-md-2"></div>

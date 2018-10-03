@@ -7,7 +7,7 @@ module.exports.login = (application, req, res) => {
     const errors = req.validationErrors();
 
     if (errors) {
-        res.render('home', { errors });
+        res.render('index', { errors });
 
         return;
     }
