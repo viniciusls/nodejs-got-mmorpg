@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/viniciusls/nodejs-got-mmorpg/issues"
   },
-  "homepage": "https://github.com/viniciusls/nodejs-got-mmorpg#readme"
+  "homepage": "https://github.com/viniciusls/nodejs-got-mmorpg#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
