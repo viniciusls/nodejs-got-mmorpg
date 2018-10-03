@@ -1,0 +1,24 @@
+{
+  "name": "nodejs-got-mmorpg",
+  "version": "1.0.0",
+  "description": "MMORPG based on Game of Thrones from NodeJS Course @ Udemy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viniciusls/nodejs-got-mmorpg.git"
+  },
+  "keywords": [
+    "nodejs",
+    "mmorpg",
+    "got"
+  ],
+  "author": "Vinicius Silva <vinicius768@msn.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/viniciusls/nodejs-got-mmorpg/issues"
+  },
+  "homepage": "https://github.com/viniciusls/nodejs-got-mmorpg#readme"
+}
