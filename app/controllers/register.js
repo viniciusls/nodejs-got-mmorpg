@@ -17,11 +17,13 @@ module.exports.store = (application, req, res) => {
         return;
     }
 
-    const connection = application.config.database;
+    //const connection = application.config.database();
+    const connection = application.get('database');
+    //console.log(connection);
 
-    const UsuariosDAO = new application.app.models.UsuariosDAO(connection);
+    const usersDAO = new application.app.models.UsersDAO(connection);
 
-    UsuariosDAO.save(data);
+    usersDAO.save(data);
 
     res.redirect('');
 };

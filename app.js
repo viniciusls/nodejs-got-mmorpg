@@ -1,5 +1,12 @@
 const app = require('./config/server');
+const mongodb = require('mongodb');
 
-app.listen(3000, () => {
-    console.log('Server is running');
+mongodb.MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true }, (err, client) => {
+    app.listen(3000, () => {
+        const database = client.db('nodejs-got-mmorpg');
+
+        app.set('database', database);
+
+        console.log('Server is running');
+    });
 });
