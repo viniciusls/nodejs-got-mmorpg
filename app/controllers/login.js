@@ -12,5 +12,17 @@ module.exports.login = (application, req, res) => {
         return;
     }
 
+    const connection = application.get('database');
+
+    const usersDAO = new application.app.models.UsersDAO(connection);
+
+    const result = usersDAO.authenticate(data);
+
+    if (result === undefined) {
+        res.render('index', { errors: { msg: 'Usuário ou senha incorretos.' } });
+    }
+
+    req.session.user = result[0];
+
     res.redirect('/game');
 };

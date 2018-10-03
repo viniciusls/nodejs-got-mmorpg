@@ -19,7 +19,6 @@ module.exports.store = (application, req, res) => {
 
     //const connection = application.config.database();
     const connection = application.get('database');
-    //console.log(connection);
 
     const usersDAO = new application.app.models.UsersDAO(connection);
 
