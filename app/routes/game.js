@@ -1,5 +1,5 @@
 module.exports = (application) => {
     application.get('/game', (req, res) => {
-        res.render('jogo');
+        application.app.controllers.game.game(application, req, res);
     });
 };
