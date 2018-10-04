@@ -16,13 +16,20 @@ module.exports.login = (application, req, res) => {
 
     const usersDAO = new application.app.models.UsersDAO(connection);
 
-    const result = usersDAO.authenticate(data);
+    usersDAO.authenticate(data, req, res);
+    
+    //console.log(req.session.user);
+    //if (req.session.user === undefined) {
+    //    res.render('index', { errors: [{ msg: 'Usuário ou senha incorretos.' }] });
 
-    if (result === undefined) {
-        res.render('index', { errors: { msg: 'Usuário ou senha incorretos.' } });
-    }
+    //    return;
+    //}
 
-    req.session.user = result[0];
+    //res.redirect('/game');
+};
 
-    res.redirect('/game');
+module.exports.logout = (application, req, res) => {
+    req.session.destroy((error) => {
+        res.redirect('/');
+    });
 };
