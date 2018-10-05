@@ -21,8 +21,10 @@ module.exports.store = (application, req, res) => {
     const connection = application.get('database');
 
     const usersDAO = new application.app.models.UsersDAO(connection);
+    const gamesDAO = new application.app.models.GamesDAO(connection);
 
     usersDAO.save(data);
+    gamesDAO.generateParams(data.username);
 
     res.redirect('');
 };
