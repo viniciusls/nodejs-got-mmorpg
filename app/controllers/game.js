@@ -5,5 +5,9 @@ module.exports.game = (application, req, res) => {
         return;
     }
     
-    res.render('jogo', { house: req.session.user.house });
+    const connection = application.get('database');
+
+    const gamesDAO = new application.app.models.GamesDAO(connection);
+
+    gamesDAO.initGame(req, res);
 };
