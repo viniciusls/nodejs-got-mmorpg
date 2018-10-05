@@ -17,6 +17,8 @@ UsersDAO.prototype.authenticate = function (data, req, res) {
                 return;
             }
         
+            delete result[0].password;
+            
             req.session.user = result[0];
 
             res.redirect('/game');

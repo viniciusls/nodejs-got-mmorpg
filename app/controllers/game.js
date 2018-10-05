@@ -5,5 +5,5 @@ module.exports.game = (application, req, res) => {
         return;
     }
     
-    res.render('jogo');
+    res.render('jogo', { house: req.session.user.house });
 };
