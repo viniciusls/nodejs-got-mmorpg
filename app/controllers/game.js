@@ -11,3 +11,11 @@ module.exports.game = (application, req, res) => {
 
     gamesDAO.initGame(req, res);
 };
+
+module.exports.subjects = (application, req, res) => {
+    res.render('aldeoes');
+};
+
+module.exports.scrolls = (application, req, res) => {
+    res.render('pergaminhos');
+};
