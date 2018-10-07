@@ -27,7 +27,7 @@
 		</nav>
 
 	    <div class="container">
-			<% if (status) { %>
+			<% if (status.length > 0) { %>
 				<% if (status === 500) { %>
 				<div class="alert alert-danger" id="errors">
 					<strong>Comando inválido!</strong>
