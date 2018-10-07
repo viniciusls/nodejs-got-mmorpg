@@ -25,6 +25,67 @@ GamesDAO.prototype.initGame = function (req, res, errors) {
     });
 };
 
+GamesDAO.prototype.collect = function (req, res) {
+    this.connection.collection('acao', (error, collection) => {
+        const date = new Date();
+        const currentDate = date.getTime();
+
+        collection.insert({
+            user: req.session.user.username,
+            action: 1,
+            quantity: req.body.quantity,
+            init_at: currentDate,
+            finish_at: currentDate + (1 * 60 * 60 * 1000)
+        });
+    });
+};
+
+GamesDAO.prototype.kill = function (req, res) {
+    this.connection.collection('acao', (error, collection) => {
+        const date = new Date();
+        const currentDate = date.getTime();
+
+        collection.insert({
+            user: req.session.user.username,
+            action: 1,
+            quantity: req.body.quantity,
+            init_at: currentDate,
+            finish_at: currentDate + (2 * 60 * 60 * 1000)
+        });
+    });
+};
+
+GamesDAO.prototype.teachHistory = function (req, res) {
+    this.connection.collection('acao', (error, collection) => {
+        const date = new Date();
+        const currentDate = date.getTime();
+
+
+        collection.insert({
+            user: req.session.user.username,
+            action: 1,
+            quantity: req.body.quantity,
+            init_at: currentDate,
+            finish_at: currentDate + (5 * 60 * 60 * 1000)
+        });
+    });
+};
+
+GamesDAO.prototype.teachMagic = function (req, res) {
+    this.connection.collection('acao', (error, collection) => {
+        const date = new Date();
+        const currentDate = date.getTime();
+
+        collection.insert({
+            user: req.session.user.username,
+            action: 1,
+            quantity: req.body.quantity,
+            init_at: currentDate,
+            finish_at: currentDate + (5 * 60 * 60 * 1000)
+        });
+    });
+};
+
 module.exports = function () {
     return GamesDAO;
 };

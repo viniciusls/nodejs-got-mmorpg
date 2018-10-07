@@ -48,7 +48,26 @@ module.exports.orderSubjects = (application, req, res) => {
         return;
     }
 
-    res.send('Sucesso');
+    const connection = application.get('database');
+
+    const gamesDAO = new application.app.models.GamesDAO(connection);
+
+    switch (data.action) {
+        case 1:
+            gamesDAO.collect();
+            break;
+        case 2:
+            gamesDAO.kill();
+            break;
+        case 3:
+            gamesDAO.teachHistory();
+            break;
+        case 4:
+            gamesDAO.teachMagic();
+            break;
+        default:
+            break;
+    }
 };
 
 module.exports.scrolls = (application, req, res) => {
@@ -57,6 +76,6 @@ module.exports.scrolls = (application, req, res) => {
 
         return;
     }
-    
+
     res.render('pergaminhos');
 };
