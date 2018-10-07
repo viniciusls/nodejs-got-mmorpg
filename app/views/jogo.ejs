@@ -27,7 +27,12 @@
 		</nav>
 
 	    <div class="container">
-	    	
+			<% if (errors) { %>
+				<div class="alert alert-danger">
+					<strong>Comando inválido!</strong>
+				</div>
+			<% } %>
+
 			<div class="row">
 	    		<div class="col-sm-3 casa">
 					<img src="images/casa_<%= house %>.jpg" />
@@ -95,7 +100,7 @@
 		<script>
 			$("#btnSubjects").on("click", function() {
 				$.ajax({
-					url: '/subjects',
+					url: '/game/subjects',
 					method: 'get',
 					success: function(data) {
 						$("#acoes").html(data);
@@ -105,7 +110,7 @@
 
 			$("#btnScrolls").on("click", function() {
 				$.ajax({
-					url: '/scrolls',
+					url: '/game/scrolls',
 					method: 'get',
 					success: function(data) {
 						$("#acoes").html(data);
