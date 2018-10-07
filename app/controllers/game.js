@@ -19,10 +19,22 @@ module.exports.game = (application, req, res) => {
 };
 
 module.exports.subjects = (application, req, res) => {
+    if (req.session.user === undefined) {
+        res.render('index', { errors: [{ msg: 'Usuário não autenticado' }] });
+
+        return;
+    }
+
     res.render('aldeoes');
 };
 
 module.exports.orderSubjects = (application, req, res) => {
+    if (req.session.user === undefined) {
+        res.render('index', { errors: [{ msg: 'Usuário não autenticado' }] });
+
+        return;
+    }
+
     const data = req.body;
 
     req.assert('action', 'Ação deve ser informada.').notEmpty();
@@ -40,5 +52,11 @@ module.exports.orderSubjects = (application, req, res) => {
 };
 
 module.exports.scrolls = (application, req, res) => {
+    if (req.session.user === undefined) {
+        res.render('index', { errors: [{ msg: 'Usuário não autenticado' }] });
+
+        return;
+    }
+    
     res.render('pergaminhos');
 };

@@ -28,7 +28,7 @@
 
 	    <div class="container">
 			<% if (errors) { %>
-				<div class="alert alert-danger">
+				<div class="alert alert-danger" id="errors">
 					<strong>Comando inválido!</strong>
 				</div>
 			<% } %>
@@ -99,6 +99,8 @@
 
 		<script>
 			$("#btnSubjects").on("click", function() {
+				$("#errors").hide();
+
 				$.ajax({
 					url: '/game/subjects',
 					method: 'get',
@@ -109,6 +111,8 @@
 			});
 
 			$("#btnScrolls").on("click", function() {
+				$("#errors").hide();
+				
 				$.ajax({
 					url: '/game/scrolls',
 					method: 'get',
