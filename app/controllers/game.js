@@ -5,17 +5,13 @@ module.exports.game = (application, req, res) => {
         return;
     }
 
-    let errors = false;
-
-    if (parseInt(req.query.res) === 500) {
-        errors = true;
-    }
+    const status = parseInt(req.query.status);
     
     const connection = application.get('database');
 
     const gamesDAO = new application.app.models.GamesDAO(connection);
 
-    gamesDAO.initGame(req, res, errors);
+    gamesDAO.initGame(req, res, status);
 };
 
 module.exports.subjects = (application, req, res) => {
@@ -68,6 +64,8 @@ module.exports.orderSubjects = (application, req, res) => {
         default:
             break;
     }
+    
+    res.redirect('/game?res=200');
 };
 
 module.exports.scrolls = (application, req, res) => {

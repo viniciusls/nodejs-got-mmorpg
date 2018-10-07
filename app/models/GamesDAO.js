@@ -16,11 +16,11 @@ GamesDAO.prototype.generateParams = function (username) {
     });
 };
 
-GamesDAO.prototype.initGame = function (req, res, errors) {
+GamesDAO.prototype.initGame = function (req, res, status) {
     this.connection.collection('games', (error, collection) => {
         collection.find({ user: req.session.user.username }).toArray((error, result) => {
             console.log(result[0]);
-            res.render('jogo', { house: req.session.user.house, params: result[0], errors });
+            res.render('jogo', { house: req.session.user.house, params: result[0], status });
         });
     });
 };

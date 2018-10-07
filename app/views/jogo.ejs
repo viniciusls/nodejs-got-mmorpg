@@ -27,10 +27,18 @@
 		</nav>
 
 	    <div class="container">
-			<% if (errors) { %>
+			<% if (status) { %>
+				<% if (status === 500) { %>
 				<div class="alert alert-danger" id="errors">
 					<strong>Comando inválido!</strong>
 				</div>
+				<% } %>
+
+				<% if (status === 200) { %>
+					<div class="alert alert-success" id="errors">
+						<strong>Sucesso!</strong>
+					</div>
+					<% } %>
 			<% } %>
 
 			<div class="row">
@@ -112,7 +120,7 @@
 
 			$("#btnScrolls").on("click", function() {
 				$("#errors").hide();
-				
+
 				$.ajax({
 					url: '/game/scrolls',
 					method: 'get',
