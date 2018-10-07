@@ -19,14 +19,13 @@ GamesDAO.prototype.generateParams = function (username) {
 GamesDAO.prototype.initGame = function (req, res, status) {
     this.connection.collection('games', (error, collection) => {
         collection.find({ user: req.session.user.username }).toArray((error, result) => {
-            console.log(result[0]);
             res.render('jogo', { house: req.session.user.house, params: result[0], status });
         });
     });
 };
 
 GamesDAO.prototype.collect = function (req, res) {
-    this.connection.collection('acao', (error, collection) => {
+    this.connection.collection('actions', (error, collection) => {
         const date = new Date();
         const currentDate = date.getTime();
 
@@ -41,7 +40,7 @@ GamesDAO.prototype.collect = function (req, res) {
 };
 
 GamesDAO.prototype.kill = function (req, res) {
-    this.connection.collection('acao', (error, collection) => {
+    this.connection.collection('actions', (error, collection) => {
         const date = new Date();
         const currentDate = date.getTime();
 
@@ -56,7 +55,7 @@ GamesDAO.prototype.kill = function (req, res) {
 };
 
 GamesDAO.prototype.teachHistory = function (req, res) {
-    this.connection.collection('acao', (error, collection) => {
+    this.connection.collection('actions', (error, collection) => {
         const date = new Date();
         const currentDate = date.getTime();
 
@@ -72,7 +71,7 @@ GamesDAO.prototype.teachHistory = function (req, res) {
 };
 
 GamesDAO.prototype.teachMagic = function (req, res) {
-    this.connection.collection('acao', (error, collection) => {
+    this.connection.collection('actions', (error, collection) => {
         const date = new Date();
         const currentDate = date.getTime();
 
@@ -82,6 +81,14 @@ GamesDAO.prototype.teachMagic = function (req, res) {
             quantity: req.body.quantity,
             init_at: currentDate,
             finish_at: currentDate + (5 * 60 * 60 * 1000)
+        });
+    });
+};
+
+GamesDAO.prototype.getActions = function (req, res) {
+    this.connection.collection('actions', (error, collection) => {
+        collection.find({ user: req.session.user.username }).toArray((error, result) => {
+            res.render('pergaminhos', { actions: result });
         });
     });
 };

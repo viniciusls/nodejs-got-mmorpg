@@ -75,5 +75,11 @@ module.exports.scrolls = (application, req, res) => {
         return;
     }
 
+    const connection = application.get('database');
+
+    const gamesDAO = new application.app.models.GamesDAO(connection);
+
+    gamesDAO.getActions(req, res);
+
     res.render('pergaminhos');
 };
